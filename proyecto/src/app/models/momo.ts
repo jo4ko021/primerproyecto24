@@ -4,5 +4,6 @@ export interface Momo {
     rareza : string,
     shiny : boolean,
     precio : string,
-    imagen: string
+    imagen : string
+    descripcion : string
 }
