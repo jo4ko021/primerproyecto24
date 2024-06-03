@@ -12,6 +12,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+
+//angular components
+import { FormsModule } from '@angular/forms';
+
+
+
 
 
 @NgModule({
@@ -25,11 +32,15 @@ import {MatButtonModule} from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    MatSelectModule
   ],
   exports: [
     RegistroComponent,
-    IniciosesionComponent
+    IniciosesionComponent,
+    FormsModule,
+    MatSelectModule
   ]
 })
 export class AutentificacionModule { }
