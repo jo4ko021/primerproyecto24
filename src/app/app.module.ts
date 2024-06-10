@@ -8,6 +8,12 @@ import { Vista2Component } from './vista2/vista2.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './modules/shared/shared.module';
 
+//importacion de herramientas de firebase
+import { environments } from 'src/environments/environment';
+import{AngularFireModule} from '@angular/fire/compat';
+import{AngularFireAuthModule} from '@angular/fire/compat/auth';
+import{AngularFireStorageModule} from '@angular/fire/compat/storage';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +25,10 @@ import { SharedModule } from './modules/shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    AngularFireModule.initializeApp(environments.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
