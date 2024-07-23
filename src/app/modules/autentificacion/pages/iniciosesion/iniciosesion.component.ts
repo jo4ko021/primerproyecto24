@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
+import { AuthService } from '../../service/auth.service';
+import { Router } from '@angular/router';
+import { FirestoreService } from 'src/app/modules/shared/services/firestore.service';
+
 
 @Component({
   selector: 'app-iniciosesion',
@@ -43,10 +47,8 @@ usuarios:Usuario []=[
     rol: "administrador"
   }
 ]
-iniciarSesion(){
   
 }
-*/
   public coleccionusuarioslocales: Usuario[]
   constructor() {
     this.coleccionusuarioslocales = [
@@ -76,6 +78,7 @@ iniciarSesion(){
       }
     ]
   }
+    */
   usuarios: Usuario = {
     uid: "",
     nombre: "",
@@ -84,6 +87,7 @@ iniciarSesion(){
     password: "",
     rol: ""
   }
+  /*
   iniciarSesion() {
     const credenciales = {
       uid: this.usuarios.uid,
@@ -114,4 +118,20 @@ iniciarSesion(){
       rol: this.usuarios.rol = ""
     }
   }
+ constructor(public servicioAuth: AuthService, public serviciofirestore: FirestoreService , public servicioRutas :Router){
+
+ }
+}
+  async iniciarSesion() {
+    const credenciales = {
+      email: this.usuario.email,
+      password: this.usuario.password
+    }
+    const res = await this.servicioAuth.iniciarSesion(credenciales.email, credenciales.password)
+      .then(res => {
+        alert('se pudo ingresar con exito'), this.servicioRutas.navigate(['/inicio'])
+      })
+
+  }
+      */
 }

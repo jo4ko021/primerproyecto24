@@ -1,20 +1,20 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CatalogoComponent } from './catalogo/catalogo.component';
-import { InicioModule } from '../inicio/inicio.module';
-import { ProductoModule } from './producto.module';
-import { InicioComponent } from '../inicio/pages/inicio/inicio.component';
+import { ProductoComponent } from './pages/producto/producto.component';
+import { CatalogoComponent } from './pages/catalogo/catalogo.component';
+import { InversionesComponent } from './pages/inversiones/inversiones.component';
+
 
 const routes: Routes = [
   {
-    path:"/inicio",component:InicioComponent
+    path:"producto",component:ProductoComponent
   },
   {
-  path:"/catalogo",loadChildren:()=>import('../inicio/inicio.module').then(m=>InicioModule)
+    path:"alimentacion",component:CatalogoComponent
   },
   {
-    path:"/producto",loadChildren:()=>import('./producto.module').then(m=>ProductoModule)
-    }
+    path:"indumentaria",component:InversionesComponent
+  }
 ];
 
 @NgModule({

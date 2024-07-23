@@ -3,18 +3,19 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span>My App</span>
-      <!-- menu de producto -->
-      <button mat-button [matMenuTriggerFor]="producto">Menu</button>
-      <mat-menu #producto="matMenu">
-        <button mat-menu-item routerLink="/catalogo">catalogo</button>
-        <button mat-menu-item></button>
-      </mat-menu>
+  <!-- menu de producto -->
+  <button mat-button [matMenuTriggerFor]="producto">Menu</button>
+  <mat-menu #producto="matMenu">
+    <button mat-menu-item routerLink="/catalogo">catalogo</button>
+    <button mat-menu-item></button>
+  </mat-menu>
   <span class="example-spacer"></span>
   <!-- inicio de sesion -->
   <button mat-icon-button [matMenuTriggerFor]="usuario"><mat-icon>person</mat-icon></button>
   <mat-menu #usuario="matMenu">
-    <button mat-menu-item routerLink="/registro">Registrarse</button>
-    <button mat-menu-item routerLink="/inicio-sesión">Iniciar sesión</button>
+    <button mat-menu-item (click)="Ingresar()" routerLink="/registro" *ngIf="loggeado">Registrarse</button>
+    <button mat-menu-item routerLink="/inicio-sesión" *ngIf="loggeado">Iniciar sesión</button>
+    <button mat-menu-item (click)="CerrarSesion()" *ngIf="desloggeado">Cerrar Sesion</button>
   </mat-menu>
   <!-- carrito -->
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
