@@ -100,10 +100,18 @@ usuarios:Usuario []=[
     for (let i = 0; i < this.coleccionusuarioslocales.length; i++) {
       const usuariolocal = this.coleccionusuarioslocales[i];
       if (usuariolocal.email === credenciales.email && usuariolocal.password === credenciales.password) {
-        alert("se igresó con exito!");
+               Swal.fire({
+          title: "¡Buen trabajo!",
+          text: "Se pudo ingresar con exito",
+          icon: "Success"
+        });
         break;
       } else {
-        alert("los datos son erroneos");
+               Swal.fire({
+          title: "¡Oh no!",
+          text: "No se pudo registrar con exito",
+          icon: "error"
+        });
         break;
       }
     }

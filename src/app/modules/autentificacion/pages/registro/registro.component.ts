@@ -4,6 +4,7 @@ import { AuthService } from '../../service/auth.service';
 import { FirestoreService } from 'src/app/modules/shared/services/firestore.service';
 import { Router } from '@angular/router';
 import * as cryptoJs from 'crypto-js'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -30,9 +31,20 @@ export class RegistroComponent {
     }
     const res = await this.servicioAuth.registrar(credenciales.email, credenciales.password)
       //el metodo navigate nos redirecciona a otra vista
-      .then(res => { alert("se pudo registrar con exito"), this.servicioRutas.navigate(['/inicio']) })
-      .catch(error => { alert("hubo un problema al registrar u nuevo usuario\n" + error) })
-    alert("te registraste con exito!")
+      .then(res => {
+        Swal.fire({
+          title: "¡Buen trabajo!",
+          text: "Se pudo registrar con exito",
+          icon: "success"
+        }), this.servicioRutas.navigate(['/inicio'])
+      })
+      .catch(error => {
+        Swal.fire({
+          title: "¡Oh no!",
+          text: "No se pudo registrar con exito",
+          icon: "error"
+        });
+      })
   }
   async guardarUsuario() {
     this.servicioFirestore.agregarUsuario(this.usuarios, this.usuarios.uid)
