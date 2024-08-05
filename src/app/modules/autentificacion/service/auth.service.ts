@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { FirestoreService } from '../../shared/services/firestore.service';
-import { Usuario } from 'src/app/models/usuario';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private auth: AngularFireAuth, private ServicioFirestore : FirestoreService) { }
+  constructor(private auth: AngularFireAuth, private ServicioFirestore : AngularFirestore) { }
   //funcion para registro
   registrar(email:string, password:string){
     return this.auth.createUserWithEmailAndPassword(email,password)
@@ -33,8 +33,9 @@ export class AuthService {
       return user.uid;
     }
   }  
+  obtenerUsuario(email:string){
+    return this.ServicioFirestore.collection('usuarios', ref => ref.where('email', '==', email)).get().toPromise();
+  }
+  
 }
-/*obtenerUsuario(){
-  return.this.ServicioFirestore.collection('usuarios', ref => ref.where('email','==',email)).get().toPromise();
-}
-*/
+

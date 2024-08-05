@@ -24,6 +24,7 @@ export class RegistroComponent {
   }
   coleccionUsuarios: Usuario[] = []
   constructor(public servicioAuth: AuthService, public servicioRutas: Router, public servicioFirestore: FirestoreService) { }
+
   async registrar() {
     const credenciales = {
       email: this.usuarios.email,
@@ -45,7 +46,18 @@ export class RegistroComponent {
           icon: "error"
         });
       })
+    const uid = await this.servicioAuth.obteneruid();
+
+    this.usuarios.uid = uid;
+
+    this.usuarios.password = CryptoJS.SHA256(this.usuarios.password).toString();
+
+    this.guardarUsuario();
+
+    this.limpiarInputs();
+
   }
+
   async guardarUsuario() {
     this.servicioFirestore.agregarUsuario(this.usuarios, this.usuarios.uid)
       .then(res => {
@@ -54,11 +66,6 @@ export class RegistroComponent {
       .catch(err => {
         console.log('Error => ', err);
       })
-    // Constante UID captura el identificado de la BD
-    const uid = await this.servicioAuth.obteneruid();
-
-    // Se le asigna al atributo de la interfaz esta constante
-    this.usuarios.uid = uid;
   }
   limpiarInputs() {
     const inputs = {
@@ -70,23 +77,5 @@ export class RegistroComponent {
       password: this.usuarios.password = ''
     }
   }
-  /*
-  this.usuarios.password = cryptoJs.SHA256
-
-try {
-  const usuarioBD = await this.servicioAuth.obtenerUsuario(credenciales.password)
-  if (!usuarioBD || usuarioBD.empty) {
-    alert('Correo electronico no esta registrado')
-  }
-  const usuarioDOC = usuarioBD.docs[0]
-  const hashedPassword = CryptoJS.SHA256(credenciales.password)
-  const usuarioData = usuarioDOC.data() as Usuario
-  if (hashedPassword !== usuarioData.password) (
-    alert('Contraseña incorrecta')
-    this.usuario.password = ''
-  return
-  )
-}
-  */
 }
 
