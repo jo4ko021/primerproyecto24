@@ -22,15 +22,20 @@ export class TableComponent {
   })
 
   constructor(public serviciocrud: CrudService) { }
-
-  ngOnInit(): void { }
-
+/*
+  ngOnInit(): void { 
+    this.serviciocrud.obtenerProducto().subscribe.(producto => { 
+      this.productocollection = producto 
+    })
+  }
+*/
   async agregarProducto() {
     if (this.producto.valid) {
-      /*let nuevoproducto: Producto = {
+      let nuevoproducto: Producto = {
         idproducto: "",
         nombre: this.producto.value.nombre!,
         precio: this.producto.value.precio!,
+        categoria: this.producto.value.categoria!,
         descripcion: this.producto.value.descripcion!,
         imagen: this.producto.value.imagen!,
         alt: this.producto.value.alt!
@@ -39,9 +44,14 @@ export class TableComponent {
       
 
       await this.serviciocrud.crearProducto(nuevoproducto)
-      .then
-      */
+      .then(producto => {
+          alert("Ha agregado un nuevo producto con éxito.");
+        })
+        .catch(error => {
+          alert("Ha ocurrido un error al cargar un producto.");
+        })
+      
     }
-    
+
   }
 }
