@@ -25,7 +25,7 @@
       </td>
       <td>
         <button id="btn-delete" title="eliminar" type="button"
-          class="btn btn-outline-danger"><mat-icon>delete</mat-icon></button>
+          class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#eliminarproducto"> (click)="mostrarBorrar(producto)"<mat-icon>delete</mat-icon></button>
       </td>
     </tr>
   </tbody>
@@ -47,7 +47,7 @@
       </div>
 
       <!-- CUERPO DEL MODAL-->
-      <div [formGroup]="producto" class="modal-body">
+      <div id="eliminarproducto" [formGroup]="producto" class="modal-body">
         <div class="mb-3">
           <label class="form-label">Ingrese el nombre del producto:</label>
           <input class="form-control" type="text" formControlName="nombre" placeholder="Ej.: Medias de chanchitos">

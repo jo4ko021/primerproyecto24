@@ -11,6 +11,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class TableComponent {
 
   productocollection: Producto[] = []
+  productoseleccionado!: Producto
+  modalvisibleproducto: boolean = false
 
   producto = new FormGroup({
     nombre: new FormControl('', Validators.required),
@@ -22,13 +24,13 @@ export class TableComponent {
   })
 
   constructor(public serviciocrud: CrudService) { }
-/*
-  ngOnInit(): void { 
-    this.serviciocrud.obtenerProducto().subscribe.(producto => { 
-      this.productocollection = producto 
-    })
-  }
-*/
+  /*
+    ngOnInit(): void { 
+      this.serviciocrud.obtenerProducto().subscribe.(producto => { 
+        this.productocollection = producto 
+      })
+    }
+  */
   async agregarProducto() {
     if (this.producto.valid) {
       let nuevoproducto: Producto = {
@@ -41,17 +43,27 @@ export class TableComponent {
         alt: this.producto.value.alt!
 
       }
-      
+
 
       await this.serviciocrud.crearProducto(nuevoproducto)
-      .then(producto => {
+        .then(producto => {
           alert("Ha agregado un nuevo producto con éxito.");
         })
         .catch(error => {
           alert("Ha ocurrido un error al cargar un producto.");
         })
-      
+
     }
 
   }
+  mostrarBorrar(productoseleccionado: Producto) {
+    this.modalvisibleproducto = true
+    this.productoseleccionado = productoseleccionado
+  }
+  /*
+  buscarProducto() {
+    this.serviciocrud.eliminarProducto(this.productoseleccionado.idproducto)
+    .then()
+  }
+    */
 }

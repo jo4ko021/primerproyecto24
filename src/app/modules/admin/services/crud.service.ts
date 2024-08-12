@@ -35,4 +35,20 @@ export class CrudService {
     */
     return this.productocollection.snapshotChanges().pipe(map(Action=>Action.map(a=>a.payload.doc.data())))
   }
+  /*
+  modificarProducto(idproducto:String, nuevaData:Producto){
+    return this.database.collection('producto').doc(idproducto).update(nuevaData)
+  }
+  eliminarProducto(idproducto:String){
+    return new Promise((resolve, reject) => {
+      try{
+        const respuesta = this.productocollection.doc.idproducto.delete()
+        resolve (respuesta)
+      }
+      return(error){
+        reject(error)
+      }
+    })
+  }
+    */
 }
