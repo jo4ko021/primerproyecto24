@@ -60,10 +60,9 @@ export class TableComponent {
     this.modalvisibleproducto = true
     this.productoseleccionado = productoseleccionado
   }
-  /*
+  
   buscarProducto() {
     this.serviciocrud.eliminarProducto(this.productoseleccionado.idproducto)
     .then()
   }
-    */
 }

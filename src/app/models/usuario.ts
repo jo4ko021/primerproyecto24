@@ -1,8 +1,8 @@
 export interface Usuario {
-    uid: String | any, //recibe valores vacios o indefinidos
-    nombre: String;
-    apellido: String;
-    email: String;
-    password: String;
-    rol: String;
+    uid: string | any, //recibe valores vacios o indefinidos
+    nombre: string;
+    apellido: string;
+    email: string;
+    password: string;
+    rol: string;
 }

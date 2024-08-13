@@ -35,20 +35,27 @@ export class CrudService {
     */
     return this.productocollection.snapshotChanges().pipe(map(Action=>Action.map(a=>a.payload.doc.data())))
   }
-  /*
-  modificarProducto(idproducto:String, nuevaData:Producto){
-    return this.database.collection('producto').doc(idproducto).update(nuevaData)
+  // EDITAR productos
+  modificarProducto(idProducto: string, nuevaData: Producto){
+    /*
+      Accedemos a la colección "productos" de la Base de Datos, buscamos el ID del 
+      producto seleccionado y lo actualizamos con el método "update", enviando la 
+      nueva información
+    */
+    return this.database.collection('productos').doc(idProducto).update(nuevaData);
   }
-  eliminarProducto(idproducto:String){
+
+  // ELIMINAR productos
+  eliminarProducto(idProducto: string){
     return new Promise((resolve, reject) => {
       try{
-        const respuesta = this.productocollection.doc.idproducto.delete()
-        resolve (respuesta)
+        const respuesta = this.productocollection.doc(idProducto).delete();
+
+        resolve (respuesta);
       }
-      return(error){
-        reject(error)
+      catch(error){
+        reject (error);
       }
     })
   }
-    */
 }

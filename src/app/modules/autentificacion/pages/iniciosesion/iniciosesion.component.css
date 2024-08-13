@@ -1,11 +1,48 @@
-.container{
+.container {
     display: flex;
-    padding: 10px;
+    margin-top: 50px;
     text-align: center;
     justify-content: center;
+    box-shadow: 1px 1px 37px 2px rgba(0, 0, 0, 0.57);
+    -webkit-box-shadow: 1px 1px 37px 2px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: 1px 1px 37px 2px rgba(0, 0, 0, 0.57);
 }
 
-.boton{
-    width: 120px;
+i {
+    margin-left: 15px;
+    margin-top: 30px;
+    text-align: start;
+}
+
+.boton {
+    width: 300px;
     margin: auto;
+    margin-top: 125px;
+    margin-bottom: unset;
+    font-size: large;
+}
+
+mat-form-field {
+    margin-inline: 5px;
+    margin-bottom: 35px;
+}
+
+.divinputs {
+    background-color: #0f69a1;
+    padding-right: 10px;
+}
+
+mat-icon{
+    color: white;
+}
+
+mat-icon svg{
+    fill: white;
+}
+
+a{
+    margin: auto;
+    height: fit-content;
+    width: fit-content;
+    margin-top: unset;
 }
