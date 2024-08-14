@@ -24,13 +24,13 @@ export class TableComponent {
   })
 
   constructor(public serviciocrud: CrudService) { }
-  /*
-    ngOnInit(): void { 
-      this.serviciocrud.obtenerProducto().subscribe.(producto => { 
-        this.productocollection = producto 
-      })
-    }
-  */
+
+  ngOnInit(): void {
+    this.serviciocrud.obtenerProducto().subscribe(producto => {
+      this.productocollection = producto
+    })
+  }
+
   async agregarProducto() {
     if (this.producto.valid) {
       let nuevoproducto: Producto = {
@@ -60,9 +60,9 @@ export class TableComponent {
     this.modalvisibleproducto = true
     this.productoseleccionado = productoseleccionado
   }
-  
-  buscarProducto() {
+
+  borrarProducto() {
     this.serviciocrud.eliminarProducto(this.productoseleccionado.idproducto)
-    .then()
+      .then()
   }
 }

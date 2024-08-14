@@ -1,3 +1,10 @@
+div.img {
+    margin-top: -100px;
+    padding: 200px;
+    size: 100%;
+    background-image: url("../../../../../assets/wallpapersden.com_minimal-hd-landscape_2560x1440.jpg");
+}
+
 .container {
     display: flex;
     margin-top: 50px;
@@ -28,19 +35,13 @@ mat-form-field {
 }
 
 .divinputs {
-    background-color: #0f69a1;
+    background-color: rgb(190, 250, 245);
     padding-right: 10px;
 }
 
-mat-icon{
-    color: white;
-}
 
-mat-icon svg{
-    fill: white;
-}
-
-a{
+a {
+    color: rgb(154, 250, 234);
     margin: auto;
     height: fit-content;
     width: fit-content;
