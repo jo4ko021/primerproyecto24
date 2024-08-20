@@ -34,7 +34,7 @@ export class TableComponent {
   async agregarProducto() {
     if (this.producto.valid) {
       let nuevoproducto: Producto = {
-        idproducto: "",
+        idproducto: '',
         nombre: this.producto.value.nombre!,
         precio: this.producto.value.precio!,
         categoria: this.producto.value.categoria!,
@@ -48,9 +48,11 @@ export class TableComponent {
       await this.serviciocrud.crearProducto(nuevoproducto)
         .then(producto => {
           alert("Ha agregado un nuevo producto con éxito.");
+          // this.producto.reset();
         })
         .catch(error => {
           alert("Ha ocurrido un error al cargar un producto.");
+          // this.producto.reset();
         })
 
     }
@@ -63,6 +65,42 @@ export class TableComponent {
 
   borrarProducto() {
     this.serviciocrud.eliminarProducto(this.productoseleccionado.idproducto)
-      .then()
+      .then(respuesta => {
+        alert("Se ha podido eliminar con éxito.");
+      })
+      .catch(error => {
+        alert("Ha ocurrido un error al eliminar un producto: \n"+error);
+      })
   }
+
+  mostrarEditar(productoseleccionado: Producto){
+    this.producto.setValue({
+    nombre: productoseleccionado.nombre,
+    precio: productoseleccionado.precio,
+    descripcion: productoseleccionado.descripcion,
+    categoria: productoseleccionado.categoria,
+    imagen: productoseleccionado.imagen,
+    alt: productoseleccionado.alt
+  })
+  }
+
+  editarProductos(){
+    let datos : Producto = {
+      idproducto: this.productoseleccionado.idproducto,
+      nombre: this.producto.value.nombre!,
+      precio: this.producto.value.precio!,
+      descripcion: this.producto.value.descripcion!,
+      categoria: this.producto.value.categoria!,
+      imagen: this.producto.value.imagen!,
+      alt: this.producto.value.alt!
+    }
+    this.serviciocrud.modificarProducto(this.productoseleccionado.idproducto, datos)
+    .then(producto => {
+      alert("¡El producto se ha modificado con exito!")
+    })
+    .catch(error =>{
+      alert("¡Hubo un error al modificar el producto! "+error)
+    })
+  }
+
 }

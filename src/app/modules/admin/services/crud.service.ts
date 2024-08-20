@@ -17,7 +17,7 @@ export class CrudService {
       try {
         const idproducto = this.database.createId()
         producto.idproducto = idproducto
-        const resultado = await this.productocollection.doc(idproducto)
+        const resultado = await this.productocollection.doc(idproducto).set(producto);
         resolve(resultado)
       }
       catch (error) {

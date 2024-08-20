@@ -3,21 +3,20 @@
     <h1>Inicio</h1>
     <div class="col">
       <div class="contenido" *ngFor="let i of info">
-        <mat-card class="example-card">
+        <mat-card class="example-card border border-light-subtle">
           <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{i.nombre}}</mat-card-title>
-            <mat-card-subtitle>{{i.rareza}}</mat-card-subtitle>
+            <mat-card-subtitle class="text-light">{{i.rareza}}</mat-card-subtitle>
           </mat-card-header>
-          <img mat-card-image src={{i.imagen}} alt="Photo of a Shiba Inu">
+          <img class="my-3" mat-card-image src={{i.imagen}} alt="Photo of a Shiba Inu">
           <mat-card-content>
             <p>
               {{i.descripcion}}
             </p>
           </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>precio:{{i.precio}}</button>
-            <button mat-button>shiny:{{i.shiny}}</button>
+          <mat-card-actions class="justify-content-center">
+            <button class="btn btn-outline-primary text-light" mat-button>precio:{{i.precio}}</button>
+            <button class="btn btn-outline-primary text-light" mat-button>shiny:{{i.shiny}}</button>
           </mat-card-actions>
         </mat-card>
       </div>
