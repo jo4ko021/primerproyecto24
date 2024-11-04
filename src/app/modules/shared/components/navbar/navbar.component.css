@@ -1,0 +1,42 @@
+mat-toolbar{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-links{
+    list-style: none;
+}
+
+.nav-links li{
+    display: inline-block;
+    padding: 0 20px;    
+}
+
+.nav-links li:hover{
+    transform: scale(1.1);
+}
+
+.nav-links a{
+    font-size: 700;
+    color: #eceff1;
+    text-decoration: none;    
+}
+
+.nav-links li a:hover{
+    color: #ffbc0e;
+}
+
+.logo{
+    cursor: pointer;
+}
+
+.logo img{
+    height: 70px;
+    width: auto;
+    transition: all 0.3s;
+    border-radius: 50%;
+}
+
+.logo img:hover{
+    transform: scale(1.2);
+}

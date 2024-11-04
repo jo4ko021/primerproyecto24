@@ -35,7 +35,16 @@ export class AuthService {
   }  
   obtenerUsuario(email:string){
     return this.ServicioFirestore.collection('usuarios', ref => ref.where('email', '==', email)).get().toPromise();
+
   }
-  
+  /*
+  setUsuarioRol(rol: string){
+    this.rolusuario : rol;
+  }
+
+  getUsuarioRol(): string | null{
+    return this.rolUsuario
+  }
+    */
 }
 

@@ -23,7 +23,6 @@ export class IniciosesionComponent {
   usuarios: Usuario = {
     uid: "",
     nombre: "",
-    apellido: "",
     email: "",
     password: "",
     rol: ""
@@ -128,7 +127,18 @@ export class IniciosesionComponent {
             text: "¡Se pudo ingresar con éxito :)!",
             icon: "success"
           });
+/*
+          this.servicioAuth.setUsuarioRol(usuarioData.rol)
 
+          if(usuarioData.rol === "admin"){
+            console.log("inicio de administrador")
+            this.servicioRutas.navigate('/admin')
+          }
+          else{
+            console.log("inicio de visitante")
+            this.servicioRutas.navigate('/inicio')
+          }
+*/
           this.servicioRutas.navigate(['/inicio']);
         })
         .catch(err => {

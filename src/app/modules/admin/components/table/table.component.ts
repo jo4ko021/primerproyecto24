@@ -84,7 +84,7 @@ export class TableComponent {
   }
 
   borrarProducto() {
-    this.serviciocrud.eliminarProducto(this.productoseleccionado.idproducto)
+    this.serviciocrud.eliminarProducto(this.productoseleccionado.idproducto,this.productoseleccionado.imagen)
       .then(respuesta => {
         alert("Se ha podido eliminar con éxito.");
       })
@@ -99,7 +99,7 @@ export class TableComponent {
       precio: productoseleccionado.precio,
       descripcion: productoseleccionado.descripcion,
       categoria: productoseleccionado.categoria,
-      // imagen: productoseleccionado.imagen,
+      //imagen: productoseleccionado.imagen,
       alt: productoseleccionado.alt
     })
   }
@@ -111,16 +111,46 @@ export class TableComponent {
       precio: this.producto.value.precio!,
       descripcion: this.producto.value.descripcion!,
       categoria: this.producto.value.categoria!,
-      imagen: '',
+      imagen: this.productoseleccionado.imagen,
       alt: this.producto.value.alt!
     }
-    this.serviciocrud.modificarProducto(this.productoseleccionado.idproducto, datos)
-      .then(producto => {
-        alert("¡El producto se ha modificado con exito!")
+
+    // Verificamos si el usuario ingresa o no una nueva imagen
+    if(this.imagen){
+      this.serviciocrud.subirimagen(this.nombreimagen, this.imagen, "productos")
+      .then(resp => {
+        this.serviciocrud.obtenerurlimagen(resp)
+        .then(url =>{
+          datos.imagen = url; // Actualizamos URL de la imagen en los datos del formulario
+
+          this.actualizarProducto(datos); // Actualizamos los datos
+
+          this.producto.reset(); // Vaciar las casillas del formulario
+        })
+        .catch(error => {
+          alert("Hubo un problema al subir la imagen :( \n"+error);
+
+          this.producto.reset();
+        })
       })
-      .catch(error => {
-        alert("¡Hubo un error al modificar el producto! " + error)
-      })
+    }else{
+      /*
+        Actualizamos formulario con los datos recibidos del usuario, pero sin 
+        modificar la imagen ya existente en Firestore y en Storage
+      */
+      this.actualizarProducto(datos);
+    }
   }
+    // ACTUALIZAR la información ya existente de los productos
+    actualizarProducto(datos: Producto){
+      // Enviamos al método el id del producto seleccionado y los datos actualizados
+      this.serviciocrud.modificarProducto(this.productoseleccionado.idproducto, datos)
+        .then(producto => {
+          alert("El producto se ha modificado con éxito.");
+        })
+        .catch(error => {
+          alert("Hubo un problema al modificar el producto: \n" + error);
+        })
+    }
 
 }

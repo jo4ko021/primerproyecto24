@@ -17,7 +17,6 @@ export class RegistroComponent {
   usuarios: Usuario = {
     uid: "",
     nombre: "",
-    apellido: "",
     email: "",
     password: "",
     rol: ""
@@ -50,7 +49,7 @@ export class RegistroComponent {
 
     this.usuarios.uid = uid;
 
-    this.usuarios.password = CryptoJS.SHA256(this.usuarios.password).toString();
+    this.usuarios.password = cryptoJs.SHA256(this.usuarios.password).toString();
 
     this.guardarUsuario();
 
@@ -71,7 +70,6 @@ export class RegistroComponent {
     const inputs = {
       uid: this.usuarios.uid = '',
       nombre: this.usuarios.nombre = '',
-      apellido: this.usuarios.apellido = '',
       email: this.usuarios.email = '',
       rol: this.usuarios.rol = '',
       password: this.usuarios.password = ''

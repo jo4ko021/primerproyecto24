@@ -16,7 +16,7 @@ export class CardsComponent {
         nombre : "momo normal",
         rareza : "comun",
         shiny : false,
-        precio : "10 pesos",
+        precio : "100 usd",
         imagen : "https://i.ytimg.com/vi/Yvi5INI94tk/maxresdefault.jpg",
         descripcion : "Momo en estado base"
       }
