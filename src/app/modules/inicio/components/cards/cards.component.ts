@@ -1,5 +1,7 @@
 import { Component } from '@angular/core'
-import { Momo } from 'src/app/models/momo';
+import { Producto } from 'src/app/models/producto';
+import { CrudService } from 'src/app/modules/admin/services/crud.service';
+
 
 @Component({
   selector: 'app-cards',
@@ -8,18 +10,13 @@ import { Momo } from 'src/app/models/momo';
 })
 export class CardsComponent {
   //propiedad publica de tipo array
-  public info: Momo[];
-  constructor() {
-    this.info = [
-      {
-        id : "1",
-        nombre : "momo normal",
-        rareza : "comun",
-        shiny : false,
-        precio : "100 usd",
-        imagen : "https://i.ytimg.com/vi/Yvi5INI94tk/maxresdefault.jpg",
-        descripcion : "Momo en estado base"
-      }
-    ]
+ Productos: Producto[]=[];
+
+  constructor(public crud :CrudService) {}
+  ngOnInit(): void {
+    this.crud.obtenerProducto().subscribe((productos) => {
+      this.Productos = productos.slice(1, 4);;
+    });
   }
+
 }

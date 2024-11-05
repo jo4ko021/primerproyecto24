@@ -1,1 +1,25 @@
-<p>producto works!</p>
+<div class="container">
+    <div class="row">
+      <h1>Inicio</h1>
+      <div class="col">
+        <div class="contenido" *ngFor="let i of Productos">
+          <mat-card class="example-card border border-light-subtle">
+            <mat-card-header>
+              <mat-card-title>{{i.nombre}}</mat-card-title>
+              <mat-card-subtitle class="text-light">{{i.categoria}}</mat-card-subtitle>
+            </mat-card-header>
+            <img class="my-3" mat-card-image src={{i.imagen}} alt="{{i.alt}}" style="height: 350px;">
+            <mat-card-content>
+              <p>
+                {{i.descripcion}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions class="justify-content-center">
+              <button class="btn btn-outline-primary text-light" mat-button>precio:{{i.precio}}</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  

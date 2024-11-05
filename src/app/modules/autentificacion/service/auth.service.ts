@@ -16,6 +16,8 @@ export class AuthService {
   //funcion para inicio de sesion
   iniciarSesion(email:string, password:string){
     return this.auth.signInWithEmailAndPassword(email,password)
+    const sesioniniciada=true
+    const sesioncerrada=false
   }
   //funcion para cerrar sesion
   cerrarSesion(){

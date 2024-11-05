@@ -32,7 +32,7 @@ i {
 }
 
 .divinputs {
-    background-color: rgb(190, 250, 245);
+    background: rgba(0,0,0,0.5);
     padding-right: 10px;
     padding-bottom: 30px;
 }

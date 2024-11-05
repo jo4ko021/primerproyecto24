@@ -11,7 +11,7 @@ import { getDownloadURL, getStorage, ref, UploadResult, uploadString, deleteObje
 export class CrudService {
   private respuesta!: UploadResult
   private storage = getStorage()
-  private productocollection: AngularFirestoreCollection<Producto>
+  public productocollection: AngularFirestoreCollection<Producto>
   constructor(private database: AngularFirestore) {
     this.productocollection = database.collection('producto')
   }

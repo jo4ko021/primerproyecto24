@@ -12,10 +12,6 @@ export class NavbarComponent {
 loggeado=true
 desloggeado=false
 constructor(public authservice : AuthService, public Rutas : Router){}
-Ingresar(){
-  this.loggeado=false
-  this.desloggeado=true
-}
 CerrarSesion(){
   this.desloggeado=false
   this.loggeado=true
