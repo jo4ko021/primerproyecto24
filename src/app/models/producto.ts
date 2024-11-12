@@ -5,5 +5,6 @@ export interface Producto {
     descripcion: string,
     categoria: string,
     imagen: string,
-    alt: string
+    alt: string,
+    stock:number
 }

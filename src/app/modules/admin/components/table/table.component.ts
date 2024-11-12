@@ -23,7 +23,8 @@ export class TableComponent {
     categoria: new FormControl('', Validators.required),
     descripcion: new FormControl('', Validators.required),
     //imagen: new FormControl('', Validators.required),
-    alt: new FormControl('', Validators.required)
+    alt: new FormControl('', Validators.required),
+    stock: new FormControl(0, Validators.required)
   })
 
   constructor(public serviciocrud: CrudService) { }
@@ -43,7 +44,8 @@ export class TableComponent {
         categoria: this.producto.value.categoria!,
         descripcion: this.producto.value.descripcion!,
         imagen: '',
-        alt: this.producto.value.alt!
+        alt: this.producto.value.alt!,
+        stock: this.producto.value.stock!
 
       }
       await this.serviciocrud.subirimagen(this.nombreimagen, this.imagen, 'productos')
@@ -100,7 +102,8 @@ export class TableComponent {
       descripcion: productoseleccionado.descripcion,
       categoria: productoseleccionado.categoria,
       //imagen: productoseleccionado.imagen,
-      alt: productoseleccionado.alt
+      alt: productoseleccionado.alt,
+      stock: productoseleccionado.stock
     })
   }
 
@@ -112,7 +115,8 @@ export class TableComponent {
       descripcion: this.producto.value.descripcion!,
       categoria: this.producto.value.categoria!,
       imagen: this.productoseleccionado.imagen,
-      alt: this.producto.value.alt!
+      alt: this.producto.value.alt!,
+      stock: this.producto.value.stock!
     }
 
     // Verificamos si el usuario ingresa o no una nueva imagen

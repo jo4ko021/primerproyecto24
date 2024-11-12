@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from '../../service/auth.service';
-import { Router } from '@angular/router';
 import { FirestoreService } from 'src/app/modules/shared/services/firestore.service';
+import { Router } from '@angular/router';
+import * as CryptoJS from 'crypto-js';
 import Swal from 'sweetalert2';
-
 
 @Component({
   selector: 'app-iniciosesion',
@@ -12,66 +12,24 @@ import Swal from 'sweetalert2';
   styleUrls: ['./iniciosesion.component.css']
 })
 export class IniciosesionComponent {
-  hide = true
-
+  hide = true;
   constructor(
     public servicioAuth: AuthService,
     public servicioFirestore: FirestoreService,
     public servicioRutas: Router
   ) { }
 
+  // ############################# INGRESADO
+  // Definimos la interfaz de usuario
   usuarios: Usuario = {
-    uid: "",
-    nombre: "",
-    email: "",
-    password: "",
-    rol: ""
+    uid: '',
+    nombre: '',
+    email: '',
+    rol: '',
+    password: ''
   }
 
-  /*
-  iniciarSesion() {
-    const credenciales = {
-      uid: this.usuarios.uid,
-      nombre: this.usuarios.nombre,
-      apellido: this.usuarios.apellido,
-      email: this.usuarios.email,
-      password: this.usuarios.password,
-      rol: this.usuarios.rol
-    }
-    for (let i = 0; i < this.coleccionusuarioslocales.length; i++) {
-      const usuariolocal = this.coleccionusuarioslocales[i];
-      if (usuariolocal.email === credenciales.email && usuariolocal.password === credenciales.password) {
-               Swal.fire({
-          title: "¡Buen trabajo!",
-          text: "Se pudo ingresar con exito",
-          icon: "Success"
-        });
-        break;
-      } else {
-               Swal.fire({
-          title: "¡Oh no!",
-          text: "No se pudo registrar con exito",
-          icon: "error"
-        });
-        break;
-      }
-    }
-  }
-  limpiarInput() {
-    this.usuarios = {
-      uid: this.usuarios.uid = "",
-      nombre: this.usuarios.nombre = "",
-      apellido: this.usuarios.apellido = "",
-      email: this.usuarios.email = "",
-      password: this.usuarios.password = "",
-      rol: this.usuarios.rol = ""
-    }
-  }
- constructor(public servicioAuth: AuthService, public serviciofirestore: FirestoreService , public servicioRutas :Router){
-
- }
-}
-       */
+  // Función para iniciar sesión
   async iniciarSesion() {
     const credenciales = {
       email: this.usuarios.email,
@@ -127,19 +85,21 @@ export class IniciosesionComponent {
             text: "¡Se pudo ingresar con éxito :)!",
             icon: "success"
           });
-          /*
-                    this.servicioAuth.setUsuarioRol(usuarioData.rol)
-          
-                    if(usuarioData.rol === "admin"){
-                      console.log("inicio de administrador")
-                      this.servicioRutas.navigate('/admin')
-                    }
-                    else{
-                      console.log("inicio de visitante")
-                      this.servicioRutas.navigate('/inicio')
-                    }
-          */
-          this.servicioRutas.navigate(['/inicio']);
+
+          // Almacenamos y enviamos por parametro el rol de los datos de usuario obtenido
+          this.servicioAuth.setUsuarioRol(usuarioData.rol);
+
+          if(usuarioData.rol === "admin"){
+            console.log("Inicio de administrador");
+
+            // Si es administrador, redirecciona a la vista de "admin"
+            this.servicioRutas.navigate(['/admin']);
+          } else {
+            console.log("Inicio de visitante");
+
+            // Si es otro tipo de usuario, redirecciona al "inicio"
+            this.servicioRutas.navigate(['/inicio']);
+          }
         })
         .catch(err => {
           Swal.fire({
@@ -150,7 +110,7 @@ export class IniciosesionComponent {
 
           this.limpiarInputs();
         })
-    } catch (error) {
+    } catch(error){
       this.limpiarInputs();
     }
   }
@@ -161,6 +121,4 @@ export class IniciosesionComponent {
       password: this.usuarios.password = ''
     }
   }
-
 }
-

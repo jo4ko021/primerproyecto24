@@ -45,7 +45,7 @@ export class RegistroComponent {
           icon: "error"
         });
       })
-    const uid = await this.servicioAuth.obteneruid();
+    const uid = await this.servicioAuth.obtenerUid();
 
     this.usuarios.uid = uid;
 
