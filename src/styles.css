@@ -11,8 +11,7 @@ body{
     cursor: pointer;
 }
 .dark{
-    background-color: black;
-    color: white;
+    color: black;
     transition: all,1.5s ease;
 }
 html, body { height: 100%; }

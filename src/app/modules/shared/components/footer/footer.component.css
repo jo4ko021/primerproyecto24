@@ -46,7 +46,6 @@
     line-height: 45px;
     color: #fff;
     margin-right: 10px;
-    background-color: #0d2033;
     text-align: center;
     transition: all 300ms ease;
 }
@@ -54,13 +53,19 @@
     color: aqua;
 }
 .pie-pagina .grupo-2{
-    background-color: #0a1a2a;
+    background-color: #1b3039;
     padding: 15px 10px;
     text-align: center;
     color: #fff;
+    border-top:2px solid #2e3e46;
 }
 .pie-pagina .grupo-2 small{
     font-size: 15px;
+}
+.logo img {
+    height: auto;
+    width: auto;
+    border-radius: 50%;
 }
 @media screen and (max-width:800px){
     .pie-pagina .grupo-1{

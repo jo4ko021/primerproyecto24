@@ -13,7 +13,7 @@ import { environments } from 'src/environments/environment'; // vincula a la BD 
 import { AngularFireModule } from '@angular/fire/compat'; // trabaja con las colecciones de información
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'; // trabaja con la autentificación
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { PedidoComponent } from './modules/carrito/components/pedido/pedido.component'; // trabaja con imágenes y archivos
+
 
 /**
  * npm install firebase --force <- fuerza la instalación
@@ -23,7 +23,6 @@ import { PedidoComponent } from './modules/carrito/components/pedido/pedido.comp
 @NgModule({
   declarations: [
     AppComponent,
-    PedidoComponent
   ],
   imports: [
     BrowserModule,
