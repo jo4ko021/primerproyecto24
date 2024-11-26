@@ -15,7 +15,7 @@ export class NavbarComponent {
   constructor(
     public authservice: AuthService,
     public Rutas: Router,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
   ) {}
 
   ngOnInit(): void {

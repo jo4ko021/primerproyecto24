@@ -12,6 +12,7 @@ body{
 }
 .dark{
     color: black;
+    background-color: white;
     transition: all,1.5s ease;
 }
 html, body { height: 100%; }
